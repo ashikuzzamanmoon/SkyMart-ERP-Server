@@ -23,8 +23,8 @@ app.use('/api/products', ProductRoutes);
 app.use('/api/customers', CustomerRoutes);
 app.use('/api/sales', SaleRoutes);
 app.use('/api/dashboard', DashboardRoutes);
-app.get('/health', (req: Request, res: Response) => {
-  res.status(200).json({ status: 'OK', message: 'Server is running' });
+app.get('/api/health', (req: Request, res: Response) => {
+  res.status(200).json({ success: true, message: 'Server is running' });
 });
 
 // 404 Handler

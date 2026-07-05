@@ -12,7 +12,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     message = 'Validation Error';
     errorDetails = err.errors;
   }
-  // Handle Mongoose CastError
+  // Handle Mongoose CastError (Invalid ObjectId)
   else if (err.name === 'CastError') {
     statusCode = 400;
     message = `Invalid ${err.path}: ${err.value}`;
@@ -21,8 +21,20 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   // Handle Mongoose Duplicate Key Error
   else if (err.code === 11000) {
     statusCode = 409;
-    message = 'Duplicate Entry';
+    const duplicateField = Object.keys(err.keyValue)[0];
+    message = `${duplicateField.charAt(0).toUpperCase() + duplicateField.slice(1)} already exists`;
     errorDetails = err.keyValue;
+  }
+  // Handle JWT Errors
+  else if (err.name === 'JsonWebTokenError') {
+    statusCode = 401;
+    message = 'Invalid token. Please log in again.';
+    errorDetails = err;
+  }
+  else if (err.name === 'TokenExpiredError') {
+    statusCode = 401;
+    message = 'Your token has expired. Please log in again.';
+    errorDetails = err;
   }
   // Handle custom AppError
   else if (err instanceof AppError) {
@@ -30,7 +42,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     message = err.message;
     errorDetails = err;
   }
-  // Generic error
+  // Generic Error Fallback
   else if (err instanceof Error) {
     message = err.message;
     errorDetails = err;

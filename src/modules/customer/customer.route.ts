@@ -25,6 +25,7 @@ router.get(
 router.get(
   '/:id',
   auth,
+  authorize('admin', 'manager', 'employee'),
   CustomerControllers.getCustomerById
 );
 
