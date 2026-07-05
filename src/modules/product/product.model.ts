@@ -47,22 +47,16 @@ const productSchema = new Schema<IProduct>(
 );
 
 // Filter out deleted products for find queries
-productSchema.pre('find', function (next) {
-  const query = this as any;
-  query.find({ isDeleted: { $ne: true } });
-  (next as Function)();
+productSchema.pre('find', function (this: any) {
+  this.find({ isDeleted: { $ne: true } });
 });
 
-productSchema.pre('findOne', function (next) {
-  const query = this as any;
-  query.find({ isDeleted: { $ne: true } });
-  (next as Function)();
+productSchema.pre('findOne', function (this: any) {
+  this.find({ isDeleted: { $ne: true } });
 });
 
-productSchema.pre('aggregate', function (next) {
-  const query = this as any;
-  query.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
-  (next as Function)();
+productSchema.pre('aggregate', function (this: any) {
+  this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
 });
 
 export const Product = model<IProduct>('Product', productSchema);
