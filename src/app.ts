@@ -14,11 +14,13 @@ app.use(cookieParser());
 import { AuthRoutes } from './modules/auth/auth.route';
 import { ProductRoutes } from './modules/product/product.route';
 import { CustomerRoutes } from './modules/customer/customer.route';
+import { SaleRoutes } from './modules/sale/sale.route';
 
 // Mount routes here (e.g., app.use('/api/v1/users', userRoutes))
 app.use('/api/auth', AuthRoutes);
 app.use('/api/products', ProductRoutes);
 app.use('/api/customers', CustomerRoutes);
+app.use('/api/sales', SaleRoutes);
 app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'OK', message: 'Server is running' });
 });
