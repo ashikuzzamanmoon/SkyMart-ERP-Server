@@ -11,7 +11,7 @@ A robust, scalable backend service built to power the SkyMart Mini ERP. This sys
 
 ## 🔗 Live Links
 - **Live API URL:** `[Placeholder: Insert your Vercel/Render URL here]`
-- **Interactive Postman API Docs:** `[Placeholder: Insert your published Postman Document link here]`
+- **Interactive Postman API Docs:** `https://documenter.getpostman.com/view/29359272/2sBY4Jv2K4`
 
 ---
 
@@ -73,12 +73,18 @@ npm install
 - Copy the structure from the **Environment Variables** section above and fill in your credentials.
 > **Note:** MongoDB Transactions require a replica set. If testing locally, ensure you use MongoDB Atlas (which runs a replica set by default).
 
-**4. Run the development server**
+**4. Seed the Database**
+To generate the initial `admin`, `manager`, and `employee` users, run the seed script:
+```bash
+npm run seed
+```
+
+**5. Run the development server**
 ```bash
 npm run dev
 ```
 
-**5. Build for Production**
+**6. Build for Production**
 ```bash
 npm run build
 ```
@@ -92,7 +98,7 @@ Use the following credentials to log in and test protected routes requiring `adm
 ```json
 {
   "email": "admin@skymart.com",
-  "password": "securepassword123"
+  "password": "Admin123"
 }
 ```
 *Note: Make sure to hit the `/api/auth/login` endpoint to receive your Bearer Token, which you will need to attach as an `Authorization` header (`Bearer <token>`) for protected routes.*

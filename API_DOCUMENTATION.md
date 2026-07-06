@@ -12,7 +12,7 @@ Standardized API Response:
   "statusCode": 200,
   "message": "Action successful",
   "data": { ... },
-  "meta": { "page": 1, "limit": 10, "total": 100, "totalPage": 10 } // if applicable
+  "meta": { "page": 1, "limit": 10, "total": 100, "totalPages": 10 } // if applicable
 }
 ```
 
@@ -105,10 +105,10 @@ Standardized Error Response:
 - **Request Body (JSON)**:
   ```json
   {
-    "name": "John Doe",
-    "phone": "+123456789",
-    "email": "john@example.com",
-    "address": "123 Main St"
+    "name": "Customer Name",
+    "phone": "01712345678",
+    "email": "customer@example.com",
+    "address": "Dhanmondi, Dhaka"
   }
   ```
 - **Success Response**: Customer object.
