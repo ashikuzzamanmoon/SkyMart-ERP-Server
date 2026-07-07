@@ -10,8 +10,8 @@ A robust, scalable backend service built to power the SkyMart Mini ERP. This sys
 ---
 
 ## 🔗 Live Links
-- **Live API URL:** `[Placeholder: Insert your Vercel/Render URL here]`
-- **Interactive Postman API Docs:** `https://documenter.getpostman.com/view/29359272/2sBY4Jv2K4`
+- **Live API URL:** [https://skymart-erp-api.onrender.com](https://skymart-erp-api.onrender.com)
+- **Interactive Postman API Docs:** https://documenter.getpostman.com/view/29359272/2sBY4Jv2K4
 
 ---
 
